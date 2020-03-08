@@ -11,7 +11,7 @@ class FactService(
 
     fun getFact(factId: String): Mono<Fact> = factRepository.findById(factId)
 
-    fun getRandomFact(): Mono<Fact> = factRepository.findAll().last()
+    fun getRandomFact(): Mono<Fact> = factRepository.findAll().next()
 
     fun createFact(fact: Fact): Mono<Fact> = factRepository.save(fact)
 
