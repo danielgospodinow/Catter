@@ -5,7 +5,4 @@ import org.springframework.data.mongodb.repository.ReactiveMongoRepository
 import org.springframework.stereotype.Repository
 
 @Repository
-interface FactRepository : ReactiveMongoRepository<Fact, String> {
-
-
-}
+interface FactRepository : ReactiveMongoRepository<Fact, String>
