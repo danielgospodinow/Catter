@@ -22,3 +22,5 @@ I plan to go through all the covered topics step-by-step in a Medium article.
 
 Stay tuned. It'll be published [here](https://medium.com/@danielgospodinow).
 
+### Architecture of the software system
+<img src = "https://i.imgur.com/3IgSU24.png"/>
