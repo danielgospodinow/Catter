@@ -6,7 +6,7 @@ This project aims to be a good example of how modern software systems are made. 
 - Client application with React
 - Facebook and Google authentication with OpenID Connect (OAuth 2.0)
 - Microservice Architecture
-- REST services with Spring Boot and Kotlin
+- REST services with Kotlin Spring Boot and with Go
 - Reactive programming with Spring Webflux
 - Multiple AWS services (DynamoDB, EC2, ECR, etc)
 - Containerization with Docker
