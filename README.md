@@ -2,6 +2,9 @@
 
 This project aims to be a good example of how modern software systems are made. It'll demonstrate all modern best practices in software development, which includes both the architecture and the used technologies.
 
+### Architecture of the software system
+<img src = "https://i.imgur.com/3IgSU24.png"/>
+
 ### Topics which are (or will be) covered
 - Client application with React
 - Facebook and Google authentication with OpenID Connect (OAuth 2.0)
@@ -21,6 +24,3 @@ This project aims to be a good example of how modern software systems are made. 
 I plan to go through all the covered topics step-by-step in a Medium article.
 
 Stay tuned. It'll be published [here](https://medium.com/@danielgospodinow).
-
-### Architecture of the software system
-<img src = "https://i.imgur.com/3IgSU24.png"/>
