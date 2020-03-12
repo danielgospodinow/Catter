@@ -1,7 +1,7 @@
-import React from 'react';
-import logo from '../../images/cat2.png';
+import React from 'react'
+import logo from '../../images/cat2.png'
 import Fact from "../../components/fact/Fact"
-import './Home.css';
+import './Home.css'
 
 class Home extends React.Component {
 
@@ -11,6 +11,12 @@ class Home extends React.Component {
     this.state = {
       currentFact: "Loading ..."
     }
+  }
+
+  componentDidMount() {
+    setInterval(() => {
+      this.loadNewFact()
+    }, 10000)
   }
 
   render() {
@@ -26,6 +32,17 @@ class Home extends React.Component {
       </div>
     )
   }
+
+  loadNewFact() {
+    fetch("http://localhost:7001/api/fact/random")
+      .then(res => res.json())
+      .then(fact => {
+        this.setState({
+          currentFact: fact.content
+        })
+      })
+      .catch(err => console.log(err))
+  }
 }
 
-export default Home;
+export default Home
