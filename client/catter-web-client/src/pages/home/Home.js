@@ -1,7 +1,15 @@
 import React from 'react'
 import logo from '../../images/cat2.png'
 import Fact from "../../components/fact/Fact"
+import CircularProgress from "@material-ui/core/CircularProgress"
+import { withStyles } from '@material-ui/core/styles';
 import './Home.css'
+
+const ColorCircularProgress = withStyles({
+  root: {
+    color: '#4D4D4D',
+  },
+})(CircularProgress);
 
 class Home extends React.Component {
 
@@ -9,14 +17,23 @@ class Home extends React.Component {
     super(props)
 
     this.state = {
-      currentFact: "Loading ..."
+      currentFact: "Loading ...",
+      progress: 0,
+
+      countdownResetId: 0
     }
   }
 
   componentDidMount() {
+    const factUpdateIntervalMs = 10_000
+
+    this.loadNewFact()
+    this.resetCircle(factUpdateIntervalMs)
+
     setInterval(() => {
       this.loadNewFact()
-    }, 10000)
+      this.resetCircle(factUpdateIntervalMs)
+    }, factUpdateIntervalMs, 2000)
   }
 
   render() {
@@ -24,10 +41,8 @@ class Home extends React.Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} width="12%" className="App-logo" alt="logo" />
-
-          <div className="facts-container">
-            <Fact text={this.state.currentFact}></Fact>
-          </div>
+          <Fact text={this.state.currentFact}></Fact>
+          <ColorCircularProgress className="progress" color="inherit" variant="static" value={this.state.progress} />
         </header>
       </div>
     )
@@ -42,6 +57,33 @@ class Home extends React.Component {
         })
       })
       .catch(err => console.log(err))
+  }
+
+  resetCircle(countdownTimeMs) {
+    const maxValue = 100
+    const totalIterationsCount = 10
+    const singleIterationMs = countdownTimeMs / totalIterationsCount
+    const singleIterationValue = maxValue / totalIterationsCount
+
+    clearInterval(this.state.countdownResetId)
+
+    this.setState({
+      progress: 0
+    })
+
+    const currentCountdownResetId = setInterval(() => {
+      this.increaseCircle(singleIterationValue)
+    }, singleIterationMs)
+
+    this.setState({
+      countdownResetId: currentCountdownResetId
+    })
+  }
+
+  increaseCircle(value) {
+    this.setState({
+      progress: this.state.progress + value
+    })
   }
 }
 
