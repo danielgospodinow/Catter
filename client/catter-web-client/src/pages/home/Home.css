@@ -16,3 +16,9 @@
 .App-link {
   color: #61dafb;
 }
+
+.progress {
+  position: absolute;
+  bottom: 2%;
+  right: 1%;
+}
