@@ -2,4 +2,5 @@ p {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: rgb(204, 204, 204);
     text-justify: auto;
+    width: 40%;
 }

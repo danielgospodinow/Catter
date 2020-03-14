@@ -17,6 +17,10 @@
   color: #61dafb;
 }
 
+.App-logo {
+  margin-bottom: 2%;
+}
+
 .progress {
   position: absolute;
   bottom: 2%;
