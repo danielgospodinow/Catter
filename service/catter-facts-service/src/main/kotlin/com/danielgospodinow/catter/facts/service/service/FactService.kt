@@ -15,5 +15,5 @@ class FactService(
 
     fun createFact(fact: Fact): Mono<Fact> = factRepository.save(fact)
 
-    fun deleteFact(factId: String) = factRepository.deleteById(factId)
+    fun deleteFact(factId: String): Mono<Void> = factRepository.deleteById(factId)
 }

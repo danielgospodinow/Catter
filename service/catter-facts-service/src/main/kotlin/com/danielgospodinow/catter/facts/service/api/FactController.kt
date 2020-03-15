@@ -20,5 +20,5 @@ class FactController(
     fun createFact(@RequestBody factMono: Mono<Fact>): Mono<Fact> = factMono.flatMap(factService::createFact)
 
     @DeleteMapping("/{factId}")
-    fun deleteFact(@PathVariable factId: String) = factService.deleteFact(factId)
+    fun deleteFact(@PathVariable factId: String): Mono<Void> = factService.deleteFact(factId)
 }
