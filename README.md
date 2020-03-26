@@ -19,6 +19,7 @@ This project aims to be a good example of how modern software systems are made. 
 - Service Discovery with Spring Eureka
 - RabbitMQ/Kafka for communication between the services
 - Saga (Ochestrated/Choreographed) and Circuit Breaker patterns implemented
+- Terraform modules and Helm charts for automated infrastructure
 
 ### Tutorial
 I plan to go through all the covered topics step-by-step in a Medium article.
