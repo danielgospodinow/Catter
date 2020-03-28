@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service
 import reactor.core.publisher.Mono
 import kotlin.random.Random
 
-
 @Service
 class FactService(
         private val factRepository: FactRepository) {
