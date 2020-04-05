@@ -1,24 +1,11 @@
 package main
 
 import (
-	"fmt"
-	"log"
-	"net/http"
+	"github.com/danielgospodinow/Catter/service/catter-rating-service/routers"
 )
 
 func main() {
-	fmt.Println("Starting up the server")
+	router := routers.InitRouter()
 
-	registerHandlers()
-	startServer()
-}
-
-func registerHandlers() {
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		_, _ = fmt.Fprintf(w, "Root")
-	})
-}
-
-func startServer() {
-	log.Fatal(http.ListenAndServe("localhost:8000", nil))
+	_ = router.Run()
 }
