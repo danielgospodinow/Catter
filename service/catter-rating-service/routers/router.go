@@ -8,7 +8,7 @@ import (
 func InitRouter() *gin.Engine {
 	router := gin.Default()
 
-	router.GET("/ping", controllers.Ping)
+	router.GET("/health", controllers.HealthCheck)
 
 	return router
 }
