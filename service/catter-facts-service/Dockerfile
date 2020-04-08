@@ -1,8 +1,8 @@
 FROM openjdk:11
 
-COPY . /usr/src/catter-facts-service
+WORKDIR /app
 
-WORKDIR /usr/src/catter-facts-service
+COPY . .
 
 RUN ./gradlew clean build
 
