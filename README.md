@@ -3,7 +3,7 @@
 This project aims to be a good example of how modern software systems are made. It'll demonstrate all modern best practices in software development, which includes both the architecture and the used technologies.
 
 ### Architecture of the software system
-<img src = "https://i.imgur.com/3IgSU24.png"/>
+<img src = "https://i.imgur.com/3C1dguK.png"/>
 
 ### Topics which are (or will be) covered
 - Client application with React
@@ -25,3 +25,7 @@ This project aims to be a good example of how modern software systems are made. 
 I plan to go through all the covered topics step-by-step in a Medium article.
 
 Stay tuned. It'll be published [here](https://medium.com/@danielgospodinow).
+
+### Screenshots
+
+<img src = "https://i.imgur.com/wl57Pwr.png"/>
