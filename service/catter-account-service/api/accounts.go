@@ -3,11 +3,13 @@ package api
 import (
 	"encoding/json"
 	"fmt"
+	"net/http"
+
 	"github.com/danielgospodinow/Catter/service/catter-account-service/models"
 	"github.com/gorilla/mux"
-	"net/http"
 )
 
+// CreateAccount creates a new account.
 func CreateAccount(w http.ResponseWriter, r *http.Request) {
 	var acc models.Account
 	_ = json.NewDecoder(r.Body).Decode(&acc)
@@ -23,6 +25,7 @@ func CreateAccount(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// GetAccount retrieves an account.
 func GetAccount(w http.ResponseWriter, r *http.Request) {
 	id := mux.Vars(r)["id"]
 
@@ -37,10 +40,12 @@ func GetAccount(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// UpdateAccount updates an account.
 func UpdateAccount(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusNotImplemented)
 }
 
+// DeleteAccount deletes an account.
 func DeleteAccount(w http.ResponseWriter, r *http.Request) {
 	id := mux.Vars(r)["id"]
 

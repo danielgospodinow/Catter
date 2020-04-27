@@ -1,11 +1,13 @@
 package routers
 
 import (
+	"net/http"
+
 	"github.com/danielgospodinow/Catter/service/catter-account-service/api"
 	"github.com/gorilla/mux"
-	"net/http"
 )
 
+// InitRouter initializes router and returns an instance to it.
 func InitRouter() *mux.Router {
 	router := mux.NewRouter()
 
