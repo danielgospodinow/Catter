@@ -1,10 +1,28 @@
-.App-header {
-    background-color: #283433;
+.Container {
+    background-color: #ececec;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+.TextFields {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     font-size: calc(10px + 2vmin);
-    color: white;
+    width: 20%;
+}
+
+.Buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    width: 20%;
 }
