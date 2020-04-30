@@ -7,6 +7,7 @@ import {
 import { withGlobalState } from 'react-globally'
 import Login from "./pages/login/Login"
 import Home from "./pages/home/Home"
+import Register from './pages/register/Register';
 
 const PrivateRoute = ({ component, isAuthed, ...rest }) => {
     return (
@@ -35,6 +36,7 @@ class App extends React.Component {
         return (
             <Switch>
                 <Route exact path="/" component={Login} />
+                <Route exact path="/register" component={Register} />
                 <PrivateRoute exact path="/home" component={Home} isAuthed={this.props.globalState.isLoggedIn} />
             </Switch>
         )
