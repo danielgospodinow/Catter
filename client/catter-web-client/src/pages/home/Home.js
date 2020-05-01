@@ -30,10 +30,18 @@ class Home extends React.Component {
     this.loadNewFact()
     this.resetCircle(factUpdateIntervalMs)
 
-    setInterval(() => {
+    let initialId = setInterval(() => {
       this.loadNewFact()
       this.resetCircle(factUpdateIntervalMs)
     }, factUpdateIntervalMs, 2000)
+
+    this.setState({
+      countdownResetId: initialId
+    })
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.state.countdownResetId)
   }
 
   render() {
@@ -49,7 +57,7 @@ class Home extends React.Component {
   }
 
   loadNewFact() {
-    fetch("http://localhost:7001/api/fact/random")
+    fetch(process.env.REACT_APP_FACT_SERVICE_URL + "/api/fact/random")
       .then(res => res.json())
       .then(fact => {
         this.setState({
