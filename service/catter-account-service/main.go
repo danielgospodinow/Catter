@@ -1,10 +1,11 @@
 package main
 
 import (
-	"github.com/danielgospodinow/Catter/service/catter-account-service/db"
-	"github.com/danielgospodinow/Catter/service/catter-account-service/routers"
 	"log"
 	"net/http"
+
+	"github.com/danielgospodinow/Catter/service/catter-account-service/db"
+	"github.com/danielgospodinow/Catter/service/catter-account-service/routers"
 )
 
 func main() {

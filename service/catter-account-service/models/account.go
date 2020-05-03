@@ -2,18 +2,21 @@ package models
 
 import (
 	"context"
+	"time"
+
 	"github.com/danielgospodinow/Catter/service/catter-account-service/db"
 	"go.mongodb.org/mongo-driver/bson"
-	"time"
 )
 
+// Account is the model of an account object.
 type Account struct {
-	Id      string `json:"id"`
+	ID      string `json:"id"`
 	Name    string `json:"name"`
 	Email   string `json:"email"`
 	Picture string `json:"picture"`
 }
 
+// CreateAccount creates an Account instance.
 func CreateAccount(acc Account) error {
 	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
 	collection := db.GetClient().Database("catter").Collection("accounts")
@@ -22,6 +25,7 @@ func CreateAccount(acc Account) error {
 	return err
 }
 
+// GetAccount retrieves an Account instance by a given id.
 func GetAccount(id string) (Account, error) {
 	var acc Account
 	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
@@ -30,10 +34,12 @@ func GetAccount(id string) (Account, error) {
 	return acc, err
 }
 
+// UpdateAccount updates an Account instance by a given id.
 func UpdateAccount(id string, acc Account) {
 
 }
 
+// DeleteAccount deletes an Account instance by a given id.
 func DeleteAccount(id string) (Account, error) {
 	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
 	collection := db.GetClient().Database("catter").Collection("accounts")
