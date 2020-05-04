@@ -55,16 +55,13 @@ class Register extends React.Component {
                 if (!err) {
                     fetch(process.env.REACT_APP_ACCOUNT_SERVICE_URL + "/account", {
                         method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: {
-                            "Name": that.state.user.firstName + that.state.user.lastName,
+                        body: JSON.stringify({
+                            "Name": that.state.user.firstName + " " + that.state.user.lastName,
                             "Email": that.state.user.email,
                             "Password": hashedPassword
-                        }
+                        })
                     })
-                        .then(res => res.json())
                         .then(res => {
-                            console.log("Created account: " + res.json())
                             history.push("/")
                         })
                         .catch(err => {
