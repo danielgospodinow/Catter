@@ -6,5 +6,4 @@ import org.springframework.data.mongodb.core.mapping.Document
 @Document("facts")
 data class Fact(
         @Id var id: String?,
-        var content: String,
-        var author: User)
+        var content: String)
