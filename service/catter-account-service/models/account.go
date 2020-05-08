@@ -9,7 +9,6 @@ import (
 	"github.com/aws/aws-sdk-go/service/dynamodb"
 	"github.com/aws/aws-sdk-go/service/dynamodb/dynamodbattribute"
 	"github.com/danielgospodinow/Catter/service/catter-account-service/db"
-	"github.com/google/uuid"
 )
 
 const (
@@ -20,18 +19,14 @@ const (
 
 // Account is the model of an account object.
 type Account struct {
-	ID      string
-	Name    string
-	Email   string
-	Picture string
+	Name     string
+	Email    string
+	Password string
+	Picture  string
 }
 
 // CreateAccount creates an Account instance.
 func CreateAccount(acc Account) (Account, error) {
-	if acc.ID == "" {
-		acc.ID = uuid.New().String()
-	}
-
 	accJSON, merr := dynamodbattribute.MarshalMap(acc)
 	if merr != nil {
 		fmt.Printf("Error while marshaling object %s\n", acc)
@@ -52,20 +47,20 @@ func CreateAccount(acc Account) (Account, error) {
 	return acc, nil
 }
 
-// GetAccount retrieves an Account instance by a given id.
-func GetAccount(id string) (Account, error) {
+// GetAccount retrieves an Account instance by a given email.
+func GetAccount(email string) (Account, error) {
 	input := dynamodb.GetItemInput{
 		TableName: aws.String(tableName),
 		Key: map[string]*dynamodb.AttributeValue{
-			"ID": {
-				S: aws.String(id),
+			"Email": {
+				S: aws.String(email),
 			},
 		},
 	}
 
 	output, gerr := db.GetDynamoClient().GetItem(&input)
 	if gerr != nil {
-		fmt.Printf("There was an error retrieving item with id '%s'\n", id)
+		fmt.Printf("There was an error retrieving item with Email '%s'\n", email)
 		return Account{}, gerr
 	}
 
@@ -73,38 +68,38 @@ func GetAccount(id string) (Account, error) {
 
 	merr := dynamodbattribute.UnmarshalMap(output.Item, &acc)
 	if merr != nil {
-		fmt.Printf("Failed to unmarshal map for Account with id '%s'!\n", id)
+		fmt.Printf("Failed to unmarshal map for Account with Email '%s'!\n", email)
 		return acc, merr
 	}
 
 	return acc, nil
 }
 
-// UpdateAccount updates an Account instance by a given id.
-func UpdateAccount(id string, acc Account) (Account, error) {
+// UpdateAccount updates an Account instance by a given email.
+func UpdateAccount(email string, acc Account) (Account, error) {
 	return Account{}, errors.New("Method not implemented")
 }
 
-// DeleteAccount deletes an Account instance by a given id.
-func DeleteAccount(id string) (Account, error) {
-	acc, gerr := GetAccount(id)
+// DeleteAccount deletes an Account instance by a given email.
+func DeleteAccount(email string) (Account, error) {
+	acc, gerr := GetAccount(email)
 	if gerr != nil {
-		fmt.Printf("Failed to delete Account with id '%s'!\n", id)
+		fmt.Printf("Failed to delete Account with Email '%s'!\n", email)
 		return Account{}, gerr
 	}
 
 	input := dynamodb.DeleteItemInput{
 		TableName: aws.String(tableName),
 		Key: map[string]*dynamodb.AttributeValue{
-			"ID": {
-				S: aws.String(id),
+			"Email": {
+				S: aws.String(email),
 			},
 		},
 	}
 
 	_, derr := db.GetDynamoClient().DeleteItem(&input)
 	if derr != nil {
-		fmt.Printf("Failed to delete Account with id '%s'\n", id)
+		fmt.Printf("Failed to delete Account with Email '%s'\n", email)
 		return Account{}, derr
 	}
 
@@ -125,13 +120,13 @@ func InitAccountsTable() {
 			db.GetDynamoClient().CreateTable(&dynamodb.CreateTableInput{
 				AttributeDefinitions: []*dynamodb.AttributeDefinition{
 					{
-						AttributeName: aws.String("ID"),
+						AttributeName: aws.String("Email"),
 						AttributeType: aws.String("S"),
 					},
 				},
 				KeySchema: []*dynamodb.KeySchemaElement{
 					{
-						AttributeName: aws.String("ID"),
+						AttributeName: aws.String("Email"),
 						KeyType:       aws.String("HASH"),
 					},
 				},
