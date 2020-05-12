@@ -14,14 +14,14 @@ func CreateAccount(w http.ResponseWriter, r *http.Request) {
 	var acc models.Account
 	_ = json.NewDecoder(r.Body).Decode(&acc)
 
-	err := models.CreateAccount(acc)
+	racc, err := models.CreateAccount(acc)
 
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		_, _ = fmt.Fprintf(w, err.Error())
 	} else {
 		w.Header().Set("Content-Type", "application/json")
-		_ = json.NewEncoder(w).Encode(acc)
+		_ = json.NewEncoder(w).Encode(racc)
 	}
 }
 
