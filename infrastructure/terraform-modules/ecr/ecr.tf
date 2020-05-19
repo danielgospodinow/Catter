@@ -1,7 +1,11 @@
-resource "aws_ecr_repository" "container-repository" {
-  name = "catter-container-repository"
+resource "aws_ecr_repository" "catter-facts-service-repository" {
+  name = "catter-facts-service"
+}
 
-  image_scanning_configuration {
-    scan_on_push = true
-  }
+resource "aws_ecr_repository" "catter-rating-service-repository" {
+  name = "catter-rating-service"
+}
+
+resource "aws_ecr_repository" "catter-account-service-repository" {
+  name = "catter-account-service"
 }
