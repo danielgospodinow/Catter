@@ -30,14 +30,10 @@ class Home extends React.Component {
     this.loadNewFact()
     this.resetCircle(factUpdateIntervalMs)
 
-    let initialId = setInterval(() => {
+    setInterval(() => {
       this.loadNewFact()
       this.resetCircle(factUpdateIntervalMs)
     }, factUpdateIntervalMs, 2000)
-
-    this.setState({
-      countdownResetId: initialId
-    })
   }
 
   componentWillUnmount() {
