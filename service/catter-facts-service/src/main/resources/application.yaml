@@ -1,2 +1,8 @@
 server:
   port: 7001
+
+spring:
+  data:
+    mongodb:
+      database: facts
+      uri: mongodb://taina:27017

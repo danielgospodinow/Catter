@@ -4,4 +4,4 @@ import org.springframework.data.mongodb.core.mapping.Document
 
 @Document("users")
 data class User(
-        var name: String = "Unknown")
+        var id: String)

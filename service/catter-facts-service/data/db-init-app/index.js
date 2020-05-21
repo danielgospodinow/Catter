@@ -18,10 +18,7 @@ lineReader.on('line', line => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                content: data,
-                author: {
-                    name: "Daniel"
-                }
+                content: data
             })
         })
             .then(response => response.json())
