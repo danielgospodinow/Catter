@@ -1,9 +1,5 @@
 FROM openjdk:11
 
-WORKDIR /app
+COPY build/libs/*.jar /app.jar
 
-COPY . .
-
-RUN ./gradlew clean build
-
-CMD ["./gradlew", "bootRun"]
+CMD ["java", "-jar", "/app.jar"]

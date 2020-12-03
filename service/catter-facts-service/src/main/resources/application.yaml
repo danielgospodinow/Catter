@@ -5,4 +5,4 @@ spring:
   data:
     mongodb:
       database: facts
-      uri: mongodb://taina:27017
+      uri: mongodb://mongo:27017
