@@ -5,7 +5,7 @@ This project aims to be a good example of how modern software systems are made. 
 ### Architecture of the software system
 ![](./resources/catter-architecture.png?raw=true "Architecture")
 
-### Topics which are (or will be) covered
+### Topics which are (will be) covered
 - Client application with React
 - Facebook and Google authentication with OpenID Connect (OAuth 2.0)
 - Microservice Architecture
